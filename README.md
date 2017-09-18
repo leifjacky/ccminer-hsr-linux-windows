@@ -27,12 +27,13 @@ This project requires some libraries to be built :
 
 - pthreads (prebuilt for win)
 
+## windows
 The tree now contains recent prebuilt openssl and curl .lib for both x86 and x64 platforms (windows).
 
 To rebuild them, you need to clone this repository and its submodules :
     git clone https://github.com/peters/curl-for-windows.git compat/curl-for-windows
 
-On Linux, you can use the helper ./build.sh (edit it if required)
-
 There is also an old [Tutorial for windows](http://cudamining.co.uk/url/tutorials/id/3) on [CudaMining](http://cudamining.co.uk) website.
 
+## linux
+On Linux, you can use the helper ./build.sh (edit it if required)
