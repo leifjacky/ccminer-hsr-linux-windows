@@ -30,6 +30,7 @@ ccminer_SOURCES	= elist.h miner.h compat.h \
 			  heavy/cuda_sha256.cu heavy/cuda_sha256.h \
 			  heavy/bastion.cu heavy/cuda_bastion.cu \
 			  fuguecoin.cpp Algo256/cuda_fugue256.cu sph/fugue.c uint256.h \
+			  sph/sm3.c \
 			  groestlcoin.cpp cuda_groestlcoin.cu cuda_groestlcoin.h \
 			  myriadgroestl.cpp cuda_myriadgroestl.cu \
 			  lyra2/Lyra2.c lyra2/Sponge.c \
@@ -68,6 +69,7 @@ ccminer_SOURCES	= elist.h miner.h compat.h \
 			  x13/x13.cu x13/cuda_x13_hamsi512.cu x13/cuda_x13_fugue512.cu \
 			  x15/x14.cu x15/x15.cu x15/cuda_x14_shabal512.cu x15/cuda_x15_whirlpool.cu \
 			  x15/whirlpool.cu x15/cuda_x15_whirlpool_sm3.cu \
+			  x14/cuda_sm3.cu x14/hsr.cu \
 			  x17/x17.cu x17/hmq17.cu x17/cuda_x17_haval256.cu x17/cuda_x17_sha512.cu \
 			  x11/c11.cu x11/s3.cu x11/sib.cu x11/veltor.cu x11/cuda_streebog.cu
 
@@ -141,6 +143,9 @@ x11/cuda_x11_simd512.o: x11/cuda_x11_simd512.cu
 	$(NVCC) $(nvcc_FLAGS) -Xcompiler -Wno-unused-variable -o $@ -c $<
 
 x13/cuda_x13_hamsi512.o: x13/cuda_x13_hamsi512.cu
+	$(NVCC) $(nvcc_FLAGS) --maxrregcount=72 -o $@ -c $<
+
+x14/cuda_hsr.o: x14/cuda_hsr.cu
 	$(NVCC) $(nvcc_FLAGS) --maxrregcount=72 -o $@ -c $<
 
 x17/cuda_x17_sha512.o: x17/cuda_x17_sha512.cu
